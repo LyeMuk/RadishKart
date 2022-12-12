@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load cart %}
+{% load custom_filter %}
+<!-- body -->
+<div class="container-fluid mt-3">
+	<div class="row">
+
+		<!-- filter -->
+		<div class="col-lg-3 mx-auto">
+			<div class="list-group ">
+				<a href="/" class="list-group-item list-group-item-action btn btn-outline-secondary">All Products</a>
+				{% for category in categories %}
+				<a href="/?category={{category.id}}"
+					class="list-group-item list-group-item-action btn btn-outline-secondary ">{{category.name}}</a>
+				{% endfor %}
+			</div>
+		</div>
+
+		<!-- all products -->
+		<div id='products' class="col-lg-9 mx-auto">
+			<div class="row mx-auto">
+				{% for product in products %}
+				<div class="card mx-auto mb-3" id={{product.id}} style="width: 18rem;">
+					<img class="card-img-top" src="{{product.image.url}}" alt="Card image cap">
+					<div class="card-body">
+						<p class="card-title">{{product.name}}</p>
+						<p class="card-text"><b>{{product.price|currency}}</b></p>
+						<!-- {{product | is_in_cart:request.session.cart }} -->
+					</div>
+
+					<div class="card-footer p-0 no-gutters">
+
+						{% if product|is_in_cart:request.session.cart %}
+						<div class="row no-gutters">
+							<form action="/#{{product.id}}" class="col-2 " method="post">
+								{% csrf_token %}
+								<input hidden type="text" name='product' value='{{product.id}}'>
+								<input hidden type="text" name='remove' value='True'>
+								<input type="submit" value=" - " class="btn btn-block btn-secondary border-right">
+							</form>
+							<div class="text-center col btn btn-secondary">
+								{{product|cart_quantity:request.session.cart}} in Cart</div>
+							<form action="/#{{product.id}}" class="col-2 " method="post">
+								{% csrf_token %}
+								<input hidden type="text" name='product' value='{{product.id}}'>
+								<input type="submit" value=" + " class="btn btn-block btn-secondary border-left">
+							</form>
+						</div>
+						{% else %}
+						<form action="/#{{product.id}}" method="POST" class="btn-block">
+							{% csrf_token %}
+							<input hidden type="text" name='product' value='{{product.id}}'>
+							<input type="submit" class="float-right btn btn-secondary form-control" value="Add To Cart">
+						</form>
+						{% endif %}
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+	</div>
+</div>
+<nav class="navbar navbar-light bg-dark">
+	<a class="navbar-brand" href="#">
+	  <div></div>
+	</a>
+  </nav>
+
+{% endblock %}
+
+
+
+highly hand gesture popularity is a difficult hassle to address within the area of device learning. type strategies may be divided intosupervised and unsupervised method. based totally on these techniques the SLR system can apprehend static or dynamic signal gestures of hands. Murakami andTaguchi in the yr 1991, posted a studies article the use of neural network for the primary time in sign language reputation. With the improvement in thesubject of pc vision, severa researchers got here up with novel methods to help the physically challenged network. the usage of colored gloves, a real-time hand tracking utility was developed by means of Wang and Popovic The colour pattern of the gloves turned into recognized by k-Nearest pals(KNN) technique but continuous feeding of hand streams is needed for the gadget. however, assist Vector Mechanism (SVM) outperformed this algorithm inside the studies findings of Rekha et al. Kurdyumov et al. Tharwat et al.and Baranwal and Nandi 
+There are two kinds of sign Language popularity: remoted sign popularity and continuous sentence recognition. Likewise, complete signal level modelling and subunit signal level modelling exist in the SLR device. visible-descriptive and linguistic-oriented are  strategies that result in subunit degree sign modelling. Elakkiya etal.mixed SVM mastering and boosting set of rules to suggest a framework for subunit recognition of alphabets. An accuracy of ninety seven.6% became obtained but the machine fails to predict 26 alphabets. To extract capabilities of 23 isolated Arabic signal language Ahmed and Aly used the combination of PCA and nearby binary styles. despite getting an accuracy of ninety nine.97% in signer dependent mode, due to the use of threshold operator the machine fails to apprehend the constant grey-scale styles inside the signing place. inside the area of machine mastering, recognizing hand gesture is distinctly complicated to resolve. 
+In most of the preliminary tries, a conventional convolutional network is used that detects handgestures from frames of photos. R.Sharma et al., used 80000 person numeric symptoms with more than 500 pictures according to signal to teach a gadget getting to know model. Their gadget technique accommodates a schooling database of pre-processed pictures for a hand-detection machine and a gesture popularity machine. picture pre-processing covered characteristic extraction to normalize the input statistics before schooling the device gaining knowledge of model. The pix are transformed into grayscale for higher object contour retaining a standardized resolution and then flattened into a smaller quantity of one-dimensional additives. The function extraction approach enables to extract certain capabilities about the pixel records from pix and feed them to CNN for simpler training and more correct prediction. Hand tracking in 2nd and 3D space has been finished by means of W.Liu et al.,.They used pores and skin saliency wherein skin tones within a specific variety had been extracted for better function extraction and carried out a class accuracy of around 98%.
+it is glaring from a majority of these previous methods that to recognize hand gesture exactly with high accuracy, fashions require a large dataset and complex method with complicated mathematical processing. Pre-processing of snap shots plays a essential in the gesture monitoring method. Therefore, for our project, we used an open-source framework from Google known as Mediapipe which is capable of detecting human body part accurately. 
